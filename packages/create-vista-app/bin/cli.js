@@ -113,8 +113,15 @@ if (explicitEngine && !['default', 'flashpack'].includes(explicitEngine)) {
 }
 
 async function resolveProjectName() {
-  const args = rawArgs.filter((arg) => !arg.startsWith('-'));
-  if (args[0]) return args[0];
+  for (let index = 0; index < rawArgs.length; index += 1) {
+    const arg = rawArgs[index];
+    // Separate option values are not positional project names.
+    if (arg === '--engine' || arg === '--package-manager') {
+      if (rawArgs[index + 1] && !rawArgs[index + 1].startsWith('-')) index += 1;
+      continue;
+    }
+    if (!arg.startsWith('-')) return arg;
+  }
 
   if (!canPrompt) {
     return 'my-vista-app';

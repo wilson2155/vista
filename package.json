@@ -19,7 +19,7 @@
     "test:regression": "node scripts/test-regression.cjs",
     "test:integrity": "node scripts/test-integrity.cjs",
     "test:rust-bridge": "node scripts/test-rust-bridge.cjs",
-    "test:create-vista-app": "node scripts/test-create-vista-app-scaffold.cjs",
+    "test:create-vista-app": "node scripts/test-create-vista-app-scaffold.cjs && node --test scripts/test-create-vista-app-arguments.cjs",
     "test:server-runtime": "node scripts/test-server-runtime.cjs",
     "test:inline-server-actions": "node scripts/test-inline-server-actions.cjs",
     "test:api-routes": "node scripts/test-api-routes.cjs",
